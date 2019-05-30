@@ -1,0 +1,6 @@
+# For explanation of the commands, see
+# https://docs.python.org/3/distutils/commandref.html
+include my_blog/schema.sql
+graft my_blog/static
+graft my_blog/templates
+global-exclude *.pyc
