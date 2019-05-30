@@ -80,6 +80,7 @@ nav ul li a, nav ul li span, header .action {
   border: 1px solid #377ba8;
 }
 
+/*Not referring to REST post, see blog/index.html*/
 .post > header {
   display: flex;
   align-items: flex-end;

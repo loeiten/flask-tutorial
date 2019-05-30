@@ -35,6 +35,12 @@ def create_app(test_config=None):
     from flaskr import auth
     app.register_blueprint(auth.bp)
 
+    from flaskr import blog
+    app.register_blueprint(blog.bp)
+    # Associates the endpoint name 'index' with the / url so that
+    # url_for('index') or url_for('blog.index') will both work
+    app.add_url_rule('/', endpoint='index')
+
     return app
 
 

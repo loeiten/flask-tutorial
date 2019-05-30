@@ -11,3 +11,6 @@ export FLASK_ENV=development
 flask db-init
 flask run
 ```
+
+For viewing the database in pyCharm, follow the steps found
+[here](https://www.jetbrains.com/help/pycharm/connecting-to-a-database.html#connect-to-sqlite).
