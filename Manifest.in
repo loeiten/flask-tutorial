@@ -1,5 +1,7 @@
 # For explanation of the commands, see
 # https://docs.python.org/3/distutils/commandref.html
+# NOTE: No wheel support, see
+# https://packaging.python.org/guides/distributing-packages-using-setuptools/?highlight=manifest#manifest-in
 include my_blog/schema.sql
 graft my_blog/static
 graft my_blog/templates
