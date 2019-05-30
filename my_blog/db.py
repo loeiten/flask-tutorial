@@ -1,8 +1,13 @@
 import sqlite3
 import click
+import logging
 from flask import current_app
 from flask import g
 from flask.cli import with_appcontext
+from flask.logging import default_handler
+
+root = logging.getLogger()
+root.addHandler(default_handler)
 
 
 def get_db():
@@ -23,16 +28,23 @@ def get_db():
     return g.db
 
 
-def close_db(e=None):
+# NOTE: close_db gets an argument from flask when tearing down
+#       The argument is exc_info()[1], i.e. the value of the latest
+#       traceback
+def close_db(exception=None):
     db = g.pop('db', None)
 
     if db is not None:
         db.close()
 
+    if exception is not None:
+        root.error(f'Caught exception with value: {exception}')
 
+
+# NOTE: This is only called from the command line
 def init_db():
     db = get_db()
-    # Opens file relative to flaskr package
+    # Opens file relative to my_blog package
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
