@@ -28,6 +28,11 @@ def create_app(test_config=None):
     # Ensure the instance folder exists
     instance_path.mkdir(parents=True, exist_ok=True)
 
+    # This route is tested in test_factory
+    @app.route('/hello')
+    def hello():
+        return 'Hello, World!'
+
     # NOTE: As create_app is something the flask CLI is searching
     #       for, we register the init_app command line here
     init_app(app)
